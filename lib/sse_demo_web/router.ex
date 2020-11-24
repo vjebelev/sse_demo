@@ -19,6 +19,17 @@ defmodule SseDemoWeb.Router do
     get "/", PageController, :index
   end
 
+  pipeline :sse do
+    plug :put_format, "text/event-stream"
+    plug :fetch_session
+  end
+
+  scope "/sse", SseDemoWeb do
+    pipe_through :sse
+
+    get "/", SseController, :subscribe
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", SseDemoWeb do
   #   pipe_through :api
