@@ -12,7 +12,9 @@ defmodule SseDemo.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: SseDemo.PubSub},
       # Start the Endpoint (http/https)
-      SseDemoWeb.Endpoint
+      SseDemoWeb.Endpoint,
+      # Start Time Events Generator
+      {SseDemo.TimeEventsGenerator, [pubsub_name: SseDemo.PubSub, topic_name: "time"]},
       # Start a worker by calling: SseDemo.Worker.start_link(arg)
       # {SseDemo.Worker, arg}
     ]
