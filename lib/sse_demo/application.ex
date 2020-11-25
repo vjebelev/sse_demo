@@ -14,7 +14,7 @@ defmodule SseDemo.Application do
       # Start the Endpoint (http/https)
       SseDemoWeb.Endpoint,
       # Start Time Events Generator
-      {SseDemo.TimeEventsGenerator, [pubsub_name: SseDemo.PubSub, topic_name: "time"]},
+      {SseDemo.TimeEventsGenerator, [pubsub_name: SseDemo.PubSub, topic_name: "time", interval: 1]},
       # Start a worker by calling: SseDemo.Worker.start_link(arg)
       # {SseDemo.Worker, arg}
     ]
